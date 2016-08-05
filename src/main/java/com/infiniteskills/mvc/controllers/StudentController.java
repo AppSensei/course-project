@@ -32,5 +32,9 @@ public class StudentController {
 
 		return "student";
 	}
+	
+	public void studentSecurity() {
+		System.out.println("I'm secure!!");
+	}
 
 }
