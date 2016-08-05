@@ -1,5 +1,7 @@
 package com.infiniteskills.mvc.model;
 
+import java.io.File;
+
 import javax.persistence.Entity;
 
 
@@ -12,6 +14,7 @@ public class Student {
 	private Integer authHours;
 	private String description;
 	//Add a new image
+	private File[] file;
 	
 	public String getName() {
 		return name;
