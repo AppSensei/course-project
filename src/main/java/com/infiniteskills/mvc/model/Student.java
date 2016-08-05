@@ -11,6 +11,7 @@ public class Student {
 	private Double tutionCosts;
 	private Integer authHours;
 	private String description;
+	//Add a new image
 	
 	public String getName() {
 		return name;
