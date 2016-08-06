@@ -1,5 +1,5 @@
 package com.infiniteskills.mvc.service;
 
-public interface StudentService {
+public interface AlbumService {
 
 }

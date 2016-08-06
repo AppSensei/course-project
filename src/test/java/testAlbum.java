@@ -6,13 +6,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.infiniteskills.mvc.model.Student;
+import com.infiniteskills.mvc.model.Album;
 
 @RunWith(MockitoJUnitRunner.class)
-public class testStudent {
+public class testAlbum {
 	
 	@Mock
-	Student student;
+	Album student;
 
 	
 	@Test

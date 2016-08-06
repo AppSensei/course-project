@@ -1,21 +1,59 @@
 package com.infiniteskills.mvc.model;
 
-import java.io.File;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 
-public class Student {
+@Entity
+public class Album {
 
-	private String name;
-	private String enrollementInformation;
-	private String guardian;
-	private Double tutionCosts;
-	private Integer authHours;
-	private String description;
-	//Add a new image
-	private File[] file;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer studentId;
 	
+	@Column(name="name")
+	private String name;
+	
+	@Column(name="")
+	private String enrollementInformation;
+	
+	@Column(name="")
+	private String guardian;
+	
+	@Column(name="")
+	private Double tutionCosts;
+	
+	@Column(name="")
+	private Integer authHours;
+	
+	@Column(name="")
+	private String description;
+	
+	//Add a new image
+	@Column(name="")
+	private byte[] photo;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Major major;
+	
+	public Integer getStudentId() {
+		return studentId;
+	}
+	public void setStudentId(Integer studentId) {
+		this.studentId = studentId;
+	}
+	public byte[] getPhoto() {
+		return photo;
+	}
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
 	public String getName() {
 		return name;
 	}

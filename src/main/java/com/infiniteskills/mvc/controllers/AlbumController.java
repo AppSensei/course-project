@@ -6,22 +6,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.infiniteskills.mvc.model.Student;
+import com.infiniteskills.mvc.model.Album;
 
 @Controller
 @RequestMapping("/student")
-public class StudentController {
+public class AlbumController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String showAddStudent(Model model) {
 		System.out.println("Show Student Portal.");
-		Student student = new Student();
+		Album student = new Album();
 		model.addAttribute("student", student);
 		return "student";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addStudent(@ModelAttribute("stu") Student student, Model model) {
+	public String addStudent(@ModelAttribute("stu") Album student, Model model) {
 		System.out.println("Save FROM Student Portal.");
 
 		model.addAttribute("name", student.getName());
