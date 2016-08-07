@@ -24,12 +24,12 @@ public class AlbumController {
 	public String addStudent(@ModelAttribute("stu") Album student, Model model) {
 		System.out.println("Save FROM Student Portal.");
 
-		model.addAttribute("name", student.getName());
+/*		model.addAttribute("name", student.getName());
 		model.addAttribute("guardian", student.getGuardian());
 		model.addAttribute("authHours", student.getAuthHours());
 		model.addAttribute("tutionCosts", student.getTutionCosts());
 		model.addAttribute("description", student.getDescription());
-
+*/
 		return "student";
 	}
 	

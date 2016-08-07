@@ -1,95 +1,56 @@
 package com.infiniteskills.mvc.model;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Album")
 public class Album {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer studentId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="AlbumId")
+	private int albumId;
+
+	@Column(name = "Title")
+	private String title;
+
+	@ManyToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name="artistId")
+	private Artist artist;
 	
-	@Column(name="name")
-	private String name;
-	
-	@Column(name="")
-	private String enrollementInformation;
-	
-	@Column(name="")
-	private String guardian;
-	
-	@Column(name="")
-	private Double tutionCosts;
-	
-	@Column(name="")
-	private Integer authHours;
-	
-	@Column(name="")
-	private String description;
-	
-	//Add a new image
-	@Column(name="")
-	private byte[] photo;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Major major;
-	
-	public Integer getStudentId() {
-		return studentId;
+	public Artist getArtist() {
+		return artist;
 	}
-	public void setStudentId(Integer studentId) {
-		this.studentId = studentId;
+
+	public void setArtist(Artist artist) {
+		this.artist = artist;
 	}
-	public byte[] getPhoto() {
-		return photo;
+
+	public Integer getAlbumId() {
+		return albumId;
 	}
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
+
+	public void setAlbumId(Integer albumId) {
+		this.albumId = albumId;
 	}
-	public String getName() {
-		return name;
+
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getEnrollementInformation() {
-		return enrollementInformation;
-	}
-	public void setEnrollementInformation(String enrollementInformation) {
-		this.enrollementInformation = enrollementInformation;
-	}
-	public String getGuardian() {
-		return guardian;
-	}
-	public void setGuardian(String guardian) {
-		this.guardian = guardian;
-	}
-	public Double getTutionCosts() {
-		return tutionCosts;
-	}
-	public void setTutionCosts(Double tutionCosts) {
-		this.tutionCosts = tutionCosts;
-	}
-	public Integer getAuthHours() {
-		return authHours;
-	}
-	public void setAuthHours(Integer authHours) {
-		this.authHours = authHours;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	
+	
+
 }

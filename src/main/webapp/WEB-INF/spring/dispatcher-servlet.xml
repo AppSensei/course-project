@@ -11,6 +11,9 @@
 
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.infiniteskills.mvc.controllers" />
+	<context:component-scan base-package="com.infiniteskills.mvc.daoImpl" />
+	<context:component-scan base-package="com.infiniteskills.mvc.serviceImpl" />
+
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -35,13 +38,24 @@
 		<property name="packagesToScan">
 			<list>
 				<value>com.infiniteskills.mvc.model</value>
+
 			</list>
 		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.connection.release_mode">auto</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.use_sql_comments">false</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.jdbc.use_scrollable_resultset">true</prop>
+				<prop key="hibernate.jdbc.use_streams_for_binary">true</prop>
+				<!-- <prop key="hibernate.jdbc.batch_size">${hibernate.batchSize}</prop> -->
+				<prop key="hibernate.cache.region_prefix">hibernate.cache</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
 			</props>
 		</property>
 	</bean>
