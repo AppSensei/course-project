@@ -11,21 +11,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Album")
+@Table(name = "Album")
 public class Album {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="AlbumId")
+	@Column(name = "AlbumId")
 	private int albumId;
 
 	@Column(name = "Title")
 	private String title;
 
-	@ManyToOne(cascade= CascadeType.ALL)
-	@JoinColumn(name="artistId")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "artistId")
 	private Artist artist;
-	
+
 	public Artist getArtist() {
 		return artist;
 	}
@@ -49,8 +49,5 @@ public class Album {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
-	
 
 }

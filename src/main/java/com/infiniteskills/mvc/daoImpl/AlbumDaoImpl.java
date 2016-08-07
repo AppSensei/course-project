@@ -23,10 +23,10 @@ public class AlbumDaoImpl implements AlbumDao {
 		Session session = sessionFactory.openSession();
 		
 		Artist artist = new Artist();
-		artist.setName("Vineeth Sreenvisan");
+		artist.setName("Rajendra Prasad");
 		
 		Album album = new Album();
-		album.setTitle("Coffee House");
+		album.setTitle("Satyan Mash");
 		album.setArtist(artist);
 		
 		session.save(album);
