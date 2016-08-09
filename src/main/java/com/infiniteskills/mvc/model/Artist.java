@@ -1,25 +1,37 @@
 package com.infiniteskills.mvc.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="Artist")
 public class Artist {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ArtistId")
+	@GeneratedValue
+	@Column(name="ArtistId")	
 	private Integer artistId;
 	
 	@Column(name="Name")
 	private String name;
 	
+	@OneToMany(mappedBy="artist")
+	private List<Album> albums;
+	
+	public List<Album> getAlbums() {
+		return albums;
+	}
+
+	public void setAlbums(List<Album> albums) {
+		this.albums = albums;
+	}
+
 	public Integer getArtistId() {
 		return artistId;
 	}

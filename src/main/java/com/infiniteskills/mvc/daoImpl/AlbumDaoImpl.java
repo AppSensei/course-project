@@ -1,5 +1,8 @@
 package com.infiniteskills.mvc.daoImpl;
 
+import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,15 +25,18 @@ public class AlbumDaoImpl implements AlbumDao {
 		
 		Session session = sessionFactory.openSession();
 		
-		Artist artist = new Artist();
-		artist.setName("Rajendra Prasad");
+//		Artist artist = new Artist();
+//		artist.setName("Rony John");
+//		
+//		Album album = new Album();
+//		album.setTitle("Subin James");
+//		album.setArtist(artist);
 		
-		Album album = new Album();
-		album.setTitle("Satyan Mash");
-		album.setArtist(artist);
 		
-		session.save(album);
-		
+		Criteria criteria = session.createCriteria(Album.class);
+		List<Album> album = criteria.list();
+		System.out.println(album.toString());
+				
 	}
 
 }

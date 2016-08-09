@@ -1,6 +1,5 @@
 package com.infiniteskills.mvc.dao;
 
-import com.infiniteskills.mvc.model.Album;
 
 public interface AlbumDao {
 	
