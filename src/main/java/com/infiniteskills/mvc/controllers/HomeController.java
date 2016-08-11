@@ -32,7 +32,6 @@ public class HomeController {
 	@RequestMapping("/home")
 	public String goHome() {
 		log.info("Home Controller Invoked.");
-		albumService.saveAlbum();
 		return "home";
 	}
 	

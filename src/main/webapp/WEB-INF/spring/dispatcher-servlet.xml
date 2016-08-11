@@ -47,11 +47,8 @@
 				<prop key="hibernate.hbm2ddl.auto">none</prop>
 				<prop key="hibernate.connection.release_mode">auto</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">false</prop>
-				<prop key="hibernate.use_sql_comments">false</prop>
 				<prop key="hibernate.generate_statistics">true</prop>
 				<prop key="hibernate.jdbc.use_scrollable_resultset">true</prop>
-				<prop key="hibernate.jdbc.use_streams_for_binary">true</prop>
 				<!-- <prop key="hibernate.jdbc.batch_size">${hibernate.batchSize}</prop> -->
 				<prop key="hibernate.cache.region_prefix">hibernate.cache</prop>
 				<prop key="hibernate.cache.use_query_cache">false</prop>
