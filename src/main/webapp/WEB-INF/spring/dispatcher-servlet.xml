@@ -14,7 +14,14 @@
 	<context:component-scan base-package="com.infiniteskills.mvc.daoImpl" />
 	<context:component-scan base-package="com.infiniteskills.mvc.serviceImpl" />
 
+	<!-- Enable AspectJ style of Spring AOP -->
+	<!-- Add aop:aspectj-autoproxy element to enable Spring AspectJ support 
+		with auto proxy at runtime -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
+	<!-- Configure Aspect classes as other Spring beans -->
+	<bean name="aopAspectsBean" class="com.infiniteskills.aopAspects.LoggingAspect"/>
+	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
@@ -29,7 +36,6 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/Chinook" />
 		<property name="username" value="root" />
 		<property name="password" value="12345" />
-
 	</bean>
 
 	<bean id="sessionFactory"
