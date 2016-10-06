@@ -5,7 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%@ page session="false" %>
+<%@ page session="false"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -33,11 +33,16 @@
 		<ul class="list-group">
 			<li class="list-group-item"><label>Project Name:</label><span>${currentProject.name }</span></li>
 			<li class="list-group-item"><label>Sponsor:</label><span>${currentProject.sponsor }</span></li>
-			<li class="list-group-item"><label>Description:</label><br />
-			<span>${currentProject.description }</span></li>
+			<li class="list-group-item"><label>Description:</label><br /> <span>${currentProject.description }</span></li>
 
-			<li class="list-group-item"><label>Description:</label><br />
-			<span>${names[0] }</span></li>
+			<li class="list-group-item"><label>Description:</label><br /> <span></span></li>
+
+			<c:forEach items="${names}" var="employee">
+				<tr>
+					</br>
+					<td>Employee One: <c:out value="${employee}" /></td>
+				</tr>
+			</c:forEach>
 
 		</ul>
 

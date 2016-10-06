@@ -9,9 +9,9 @@ import com.infiniteskills.mvc.model.Album;
 public interface AlbumDao {
 	
 	// Insert New Album
-	public void saveAlbum();
+	public void saveAlbum(Album album);
 	
-	public List<Album> getAlbums();
+	public List<Album> getAlbumsHql();
 	
 	public Album getSingleAlbumById();
 	

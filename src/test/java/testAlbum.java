@@ -24,7 +24,6 @@ public class testAlbum {
 	@Test
 	public void testAlbumArtistSave() {
 		
-		
 		Session session = sessionFactory.openSession();
 		session.beginTransaction().begin();
 		

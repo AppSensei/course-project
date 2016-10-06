@@ -8,7 +8,7 @@ public interface AlbumService {
 
 	public void saveAlbum();
 
-	public List<Album> getAlbums();
+	public List<Album> getAlbumsHql();
 
 	public Album getSingleAlbumById();
 

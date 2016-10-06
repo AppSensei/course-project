@@ -1,5 +1,6 @@
 package com.infiniteskills.mvc.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.infiniteskills.mvc.model.Album;
+import com.infiniteskills.mvc.model.Artist;
+import com.infiniteskills.mvc.model.Customer;
+import com.infiniteskills.mvc.model.Track;
 import com.infiniteskills.mvc.service.AlbumService;
 
 @Controller
 @RequestMapping("/albums")
 public class AlbumController {
-	
+
 	@Autowired
 	AlbumService albumService;
 
@@ -27,41 +31,39 @@ public class AlbumController {
 		return "album";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addStudent(@ModelAttribute("stu") Album student, Model model) {
-		System.out.println("Save FROM Student Portal.");
+	@RequestMapping(value = "/saveAlbumChinook", method = RequestMethod.GET)
+	public void saveAlbumTest() {
+		albumService.saveAlbum();
+	}
 
-/*		model.addAttribute("name", student.getName());
-		model.addAttribute("guardian", student.getGuardian());
-		model.addAttribute("authHours", student.getAuthHours());
-		model.addAttribute("tutionCosts", student.getTutionCosts());
-		model.addAttribute("description", student.getDescription());
-*/
+	@RequestMapping(value = "/saveAlbum", method = RequestMethod.POST)
+	public String saveAlbum(@ModelAttribute("album") Album album, Model model) {
+		System.out.println("Save Album....");
+
+		model.addAttribute("album", album);
 		return "student";
 	}
-	
-	@RequestMapping(value="/getAlbums")
-	public List<Album> getAllAlbums() {
+
+	@RequestMapping(value = "/getalbums", method=RequestMethod.GET)
+	public void getAllAlbums() {
 		System.out.println("Retrieving All Albums");
-		
-		List<Album> albums = albumService.getAlbums();
-		return albums;
+
+		 albumService.getAlbumsHql();
 	}
-	
-	@RequestMapping(value="/getAlbum")
+
+	@RequestMapping(value = "/getAlbum")
 	public Album getAllAlbumById() {
 		System.out.println("Retrieving Single Album");
-		
+
 		Album album = albumService.getSingleAlbumById();
-		
+
 		return album;
 	}
-	
-	@RequestMapping(value="delete")
+
+	@RequestMapping(value = "delete")
 	public void deleteAlbum() {
-		
+
 		System.out.println("Deleting Single Album");
-		
 		albumService.deleteById(5);
 
 	}

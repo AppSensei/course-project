@@ -20,8 +20,8 @@
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
 	<!-- Configure Aspect classes as other Spring beans -->
-	<bean name="aopAspectsBean" class="com.infiniteskills.aopAspects.LoggingAspect"/>
-	
+	<bean name="aopAspectsBean" class="com.infiniteskills.aopAspects.LoggingAspect" />
+
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
@@ -44,7 +44,6 @@
 		<property name="packagesToScan">
 			<list>
 				<value>com.infiniteskills.mvc.model</value>
-
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -67,6 +66,9 @@
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+
+
+	<tx:annotation-driven />
 
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
