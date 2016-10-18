@@ -32,7 +32,7 @@ public class ArtistDaoImpl implements ArtistDao {
 		try {
 			
 			Query query = session.createQuery("select art.artistId, art.name, album.title from Artist art "
-					+ "inner join art.albums as album ");			
+					+ "left join fetch art.albums as album ");			
 		
 /*	    query.setFirstResult(0);
 	    query.setMaxResults(10);*/

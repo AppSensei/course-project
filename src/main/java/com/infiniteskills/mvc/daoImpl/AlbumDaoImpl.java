@@ -26,21 +26,13 @@ public class AlbumDaoImpl implements AlbumDao {
 	public void saveAlbum(Album album) {
 
 		Session session = sessionFactory.openSession();
-		Transaction tx = null;
-		// tx = session.beginTransaction();
+
 		try {
 			session.save(album);
-
-			// tx.commit();
 		} catch (HibernateException e) {
-
-			tx.rollback();
 			e.printStackTrace();
-
 		}
-
 		session.save(album);
-
 	}
 
 	@Override
@@ -51,7 +43,6 @@ public class AlbumDaoImpl implements AlbumDao {
 		List<Album> albumList = null;
 
 		try {
-
 			Query query = session
 					.createQuery("select album.albumId, album.title, artist.name from Album album "
 							+ "left join album.artist as artist ");

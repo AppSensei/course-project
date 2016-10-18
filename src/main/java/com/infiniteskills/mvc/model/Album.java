@@ -27,21 +27,10 @@ public class Album {
 	@Column(name = "Title")
 	private String title;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "ArtistId")
 	private Artist artist;
 	
-	@OneToMany(mappedBy="trackId",cascade=CascadeType.ALL, orphanRemoval=true)
-	private List<Track> track;
-
-	public List<Track> getTrack() {
-		return track;
-	}
-
-	public void setTrack(List<Track> track) {
-		this.track = track;
-	}
-
 	public Artist getArtist() {
 		return artist;
 	}

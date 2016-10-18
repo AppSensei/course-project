@@ -1,64 +1,83 @@
 package com.infiniteskills.mvc.model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
-@Table(name="Employee")
+@Table(name = "Employee")
 public class Employee {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="employeeId")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "employeeId")
 	private Integer employeeId;
-	
-	@Column(name="LastName")
+
+	@Column(name = "LastName")
 	private String lastName;
-	
-	@Column(name="FirstName")
+
+	@Column(name = "FirstName")
 	private String firstName;
 
-	@Column(name="Title")
+	@Column(name = "Title")
 	private String title;
 
-	@Column(name="BirthDate")
+	@Column(name = "BirthDate")
 	private Date birthDate;
 
-	@Column(name="HireDate")
-	private Date hireDate ;
+	@Column(name = "HireDate")
+	private Date hireDate;
 
-	@Column(name="Address")
+	@Column(name = "Address")
 	private String address;
 
-	@Column(name="City")
+	@Column(name = "City")
 	private String city;
-	
-	@Column(name="State")
+
+	@Column(name = "State")
 	private String state;
 
-	@Column(name="Country")
+	@Column(name = "Country")
 	private String country;
 
-	@Column(name="PostalCode")
+	@Column(name = "PostalCode")
 	private String postalCode;
 
-	@Column(name="Phone")
+	@Column(name = "Phone")
 	private String phone;
-	
-	@Column(name="Fax")
+
+	@Column(name = "Fax")
 	private String fax;
 
-	@Column(name="Email")
+	@Column(name = "Email")
 	private String email;
-	
-	@Column(name="ReportsTo")
-	private Integer reportsTo;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "employee")
+	@Fetch(FetchMode.SUBSELECT)
+	private List<Customer> customers;
+
+	// Getters & Setters
+
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
 
 	public Integer getEmployeeId() {
 		return employeeId;
@@ -170,14 +189,6 @@ public class Employee {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public Integer getReportsTo() {
-		return reportsTo;
-	}
-
-	public void setReportsTo(Integer reportsTo) {
-		this.reportsTo = reportsTo;
 	}
 
 }

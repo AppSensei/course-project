@@ -13,25 +13,21 @@ public class ProjectController {
 	
 	@RequestMapping(value="/add")
 	public String addProject() {
-		System.out.println("Project Add Page Initiated !!");
 		return "project_add";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String saveProject() {
-		System.out.println("Project Save Initiated !!");
 		return "project_add";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, params={"type=multi"})
 	public String saveMultiyearProject() {
-		System.out.println("saveMultiyearProject Save Initiated !!");
 		return "project_add";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST, params={"type=single","special"})
 	public String saveSpecialProject() {
-		System.out.println("saveSpecialProject Save Initiated !!");
 		return "project_add";
 	}
 	
