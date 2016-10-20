@@ -14,13 +14,13 @@ public class LoggingAspect {
 
 	@Before("execution(* com.infiniteskills.mvc.controllers.*.*(..))")
 	public void beforeLog(JoinPoint point) {
-		logger.info(point.getSignature().getName() + " About to be called");
-		logger.info(point.getStaticPart().getSignature());
+		logger.info(point.getSignature().getName() + " Called [BEFORE]");
 	}
 	
-	@AfterReturning("execution(* com.infiniteskills.mvc.controllers.AlbumController.*(com.infiniteskills.mvc.model.Album, ..))")
+	@AfterReturning("execution(* com.infiniteskills.mvc.controllers.*.*(..))")
 	public void returnLog(JoinPoint point) {
-		logger.info(point.getSignature().getName() + " called ....");
+		logger.info(point.getStaticPart().getSignature());
+		logger.info(point.getSignature().getName() + " [INVOKED] ....");
 	}
 	
 	@After("execution(* com.infiniteskills.mvc.controllers.AlbumController.*(..))")

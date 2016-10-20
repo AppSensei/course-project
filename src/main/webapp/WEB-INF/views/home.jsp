@@ -15,8 +15,6 @@
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet" href="<spring:url value="/resources/css/home.css"/>"
-	type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
@@ -27,22 +25,40 @@
 
 	<div class="container">
 
-		<h2>Current Project</h2>
-		<ul class="list-group">
-			<li class="list-group-item"><label>Project Name:</label><span>${currentProject.name }</span></li>
-			<li class="list-group-item"><label>Sponsor:</label><span>${currentProject.sponsor }</span></li>
-			<li class="list-group-item"><label>Description:</label><br /> <span>${currentProject.description }</span></li>
+		<!-- ArtistController -->
+		<h1 class="display-3">Artists & Their Albums</h1>
 
-			<li class="list-group-item"><label>Description:</label><br /> <span></span></li>
+		<%-- 		<c:forEach items="${artists}" var="artist">
+			<ul class="list-group">
+				<li class="list-group-item"><label>Artist:</label><span>${artist.name}</span></li>
+				<li class="list-group-item"><label>Album:</label><span>${artist.title}</span></li>
+			</ul>
+		</c:forEach>
+ --%>
 
-			<c:forEach items="${names}" var="employee">
-				<tr>
-					</br>
-					<td>Employee One: <c:out value="${employee}" /></td>
-				</tr>
-			</c:forEach>
+		<c:forEach items="${artists}" var="artist">
 
-		</ul>
+			<div class="list-group">
+				<a href="#" class="list-group-item list-group-item-action">
+					<h5 class="list-group-item-heading">${artist.name}</h5>
+					<p class="list-group-item-text">${artist.title}</p>
+				</a>
+			</div>
+
+		</c:forEach>
+
+		<!-- HomeController -->
+		<%-- 		<c:forEach items="${names}" var="name">
+
+			<h2>All Artists</h2>
+			<ul class="list-group">
+				<li class="list-group-item"><label>Project Name:</label><span>${name.artistId}</span></li>
+				<li class="list-group-item"><label>Sponsor:</label><span>${name.name}</span></li>
+			</ul>
+		</c:forEach> --%>
+
+
+
 
 	</div>
 </body>

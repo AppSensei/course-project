@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.infiniteskills.mvc.model.Artist;
+import com.infiniteskills.mvc.model.Project;
 import com.infiniteskills.mvc.service.AlbumService;
 
 @Controller
@@ -36,9 +38,34 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/friends")
-	public String getNumbers(Model model) {
+	public String displayFriendsInMemory(Model model) {
 		
-		List<String> names = new ArrayList<String>(Arrays.asList("John", "George", "Mathew", "Anoop", "Midhun", "Sanju"));
+		List<Artist> names = new ArrayList<Artist>();
+		
+		Artist artistOne = new Artist();
+		
+		artistOne.setArtistId(1);
+		artistOne.setName("John");
+		
+		Artist artistTwo = new Artist();
+		artistTwo.setArtistId(2);
+		artistTwo.setName("Sanju");
+		
+		Artist artistThree = new Artist();
+		artistThree.setArtistId(3);
+		artistThree.setName("Jason");
+		
+		Artist artistFour = new Artist();
+		artistFour.setArtistId(4);
+		artistFour.setName("Unni");
+
+
+		names.add(artistOne);
+		names.add(artistTwo);
+		names.add(artistThree);
+		names.add(artistFour);
+
+		
 		model.addAttribute("names", names);
 		
 		return "home";
