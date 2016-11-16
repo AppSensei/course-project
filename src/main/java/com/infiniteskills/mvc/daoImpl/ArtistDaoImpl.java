@@ -9,6 +9,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,7 +21,7 @@ import com.infiniteskills.mvc.model.Album;
 import com.infiniteskills.mvc.model.Artist;
 
 @Repository
-@Transactional(readOnly = true)
+@Transactional()
 public class ArtistDaoImpl implements ArtistDao {
 
 	@Autowired
@@ -53,6 +54,41 @@ public class ArtistDaoImpl implements ArtistDao {
 		}
 
 		return artistList;
+
+	}
+
+	@Override
+	public void saveArtistnAlbums(Artist artist) {
+
+		Session session = sessionFactory.openSession();
+
+		try {
+
+			Album albumOne = new Album();
+			albumOne.setArtist(artist);
+			albumOne.setTitle(artist.getAlbums().get(0).getTitle());
+			
+			
+			Album albumTwo = new Album();
+			albumTwo.setArtist(artist);
+			albumTwo.setTitle(artist.getAlbums().get(1).getTitle());
+			
+			Album albumThree = new Album();
+			albumThree.setArtist(artist);
+			albumThree.setTitle(artist.getAlbums().get(2).getTitle());
+
+
+			List<Album> albums = new ArrayList<Album>();
+			albums.add(albumOne);
+			albums.add(albumTwo);
+			albums.add(albumThree);
+
+			artist.setAlbums(albums);
+			session.save(artist);
+
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}
 
 	}
 }

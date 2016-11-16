@@ -9,8 +9,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.infiniteskills.mvc.model.Album;
 import com.infiniteskills.mvc.model.Artist;
+import com.infiniteskills.mvc.service.AlbumService;
 import com.infiniteskills.mvc.service.ArtistService;
 
 @Controller
@@ -19,6 +22,9 @@ public class ArtistController {
 
 	@Autowired
 	ArtistService artistService;
+
+	@Autowired
+	AlbumService albumservice;
 
 	@RequestMapping(value = "/getArtists", method = RequestMethod.GET)
 	public String getAllArtists(Model model) {
@@ -31,13 +37,24 @@ public class ArtistController {
 		return "home";
 	}
 
-	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String saveArtist(@ModelAttribute("artist") Artist artist, ModelMap model) {
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String saveNewArtistInstance(Model model) {
 
-		model.addAttribute("artistId", artist.getArtistId());
-		model.addAttribute("name", artist.getName());
-		model.addAttribute("albums", artist.getAlbums());
-		return null;
+		model.addAttribute("albumOptions", this.albumservice.getAlbumsHql());
+		model.addAttribute("artist", new Artist());
+		return "artist_add";
+
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String saveArtistObject(@ModelAttribute Artist artist) {
+		
+		if (artist != null) {
+			artistService.saveArtistnAlbums(artist);
+			
+		}
+
+		return "home";
 
 	}
 }

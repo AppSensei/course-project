@@ -7,4 +7,6 @@ import com.infiniteskills.mvc.model.Artist;
 public interface ArtistService {
 
 	public List<Artist> getArtistHql();
+	
+	public void saveArtistnAlbums(Artist artist);
 }

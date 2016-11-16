@@ -17,10 +17,10 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "Album")
-public class Album {	
-	
+public class Album {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "AlbumId", unique = true, nullable = false)
 	private Integer albumId;
 
@@ -28,9 +28,9 @@ public class Album {
 	private String title;
 
 	@ManyToOne()
-	@JoinColumn(name = "ArtistId")
+	@JoinColumn(name = "ArtistId", nullable = false)
 	private Artist artist;
-	
+
 	public Artist getArtist() {
 		return artist;
 	}
@@ -53,6 +53,19 @@ public class Album {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Album [albumId=");
+		builder.append(albumId);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", artist=");
+		builder.append(artist);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

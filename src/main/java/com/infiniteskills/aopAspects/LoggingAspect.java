@@ -6,12 +6,16 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.stereotype.Component;
 
+@EnableAspectJAutoProxy
+@Component("loggingAspect")
 @Aspect
 public class LoggingAspect {
 
 	private Logger logger = Logger.getLogger(getClass());
-
+	
 	@Before("execution(* com.infiniteskills.mvc.controllers.*.*(..))")
 	public void beforeLog(JoinPoint point) {
 		logger.info(point.getSignature().getName() + " Called [BEFORE]");
@@ -19,8 +23,9 @@ public class LoggingAspect {
 	
 	@AfterReturning("execution(* com.infiniteskills.mvc.controllers.*.*(..))")
 	public void returnLog(JoinPoint point) {
-		logger.info(point.getStaticPart().getSignature());
-		logger.info(point.getSignature().getName() + " [INVOKED] ....");
+
+		//Object argus = point.getArgs()[0].toString();		
+		logger.info(point.getSignature().getName() + " [INVOKED] " + "with ");
 	}
 	
 	@After("execution(* com.infiniteskills.mvc.controllers.AlbumController.*(..))")

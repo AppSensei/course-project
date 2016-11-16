@@ -21,5 +21,11 @@ public class ArtistServiceImpl implements ArtistService {
 		return artists;
 	}
 
+	@Override
+	public void saveArtistnAlbums(Artist artist) {
+		 
+		artistDao.saveArtistnAlbums(artist);
+	}
+
 	
 }

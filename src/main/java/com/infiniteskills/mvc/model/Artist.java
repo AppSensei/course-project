@@ -15,21 +15,20 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
-@Table(name="Artist")
+@Table(name = "Artist")
 public class Artist {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ArtistId")	
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ArtistId")
 	private Integer artistId;
-	
-	@Column(name="Name")
+
+	@Column(name = "Name")
 	private String name;
-	
-	@OneToMany(mappedBy="artist", cascade=CascadeType.ALL)
+
+	@OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
 	@Fetch(FetchMode.JOIN)
 	private List<Album> albums;
-	
 
 	public Integer getArtistId() {
 		return artistId;
@@ -46,7 +45,7 @@ public class Artist {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public List<Album> getAlbums() {
 		return albums;
 	}
@@ -54,7 +53,18 @@ public class Artist {
 	public void setAlbums(List<Album> albums) {
 		this.albums = albums;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Artist [artistId=");
+		builder.append(artistId);
+		builder.append(", name=");
+		builder.append(name);
+		builder.append(", albums=");
+		builder.append(albums);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }
