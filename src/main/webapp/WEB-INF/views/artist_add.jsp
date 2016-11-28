@@ -17,18 +17,20 @@
 	type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<spring:url value="/resources/js/util/artist.js"/>"></script>
+
 
 </head>
 <body>
 
 	<jsp:include page="../views/fragments/header.jsp"></jsp:include>
-
+			
 	<div class="container">
 
 		<div class="row">
 
 			<spring:url value="/artist/add" var="artistAddRequest" />
-			<form:form action="${artistAddRequest}" method="POST" modelAttribute="artist"
+			<form:form id="form" action="${artistAddRequest}" method="POST" modelAttribute="artist"
 				cssClass="col-md-8 col-md-offset-2">
 
 				<div class="form-group">
@@ -51,11 +53,20 @@
 					<form:input path="albums[2].title" cssClass="form-control" id="title" />
 				</div>
 
+				<div class="form-group">
+					<label for="special">Get an Email</label>
+					<a id="request-info" href="<spring:url value="/artist/request" />">Request More
+						Info</a>
+				</div>
+
 
 				<button type="submit" class="btn btn-default">Submit</button>
 			</form:form>
 
 		</div>
+
+
+    </div>
 
 	</div>
 

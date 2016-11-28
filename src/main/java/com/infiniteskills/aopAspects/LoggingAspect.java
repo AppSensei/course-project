@@ -18,14 +18,14 @@ public class LoggingAspect {
 	
 	@Before("execution(* com.infiniteskills.mvc.controllers.*.*(..))")
 	public void beforeLog(JoinPoint point) {
-		logger.info(point.getSignature().getName() + " Called [BEFORE]");
+		logger.info("[BEFORE] " + point.getSignature().getName() + " Called.");
 	}
 	
 	@AfterReturning("execution(* com.infiniteskills.mvc.controllers.*.*(..))")
 	public void returnLog(JoinPoint point) {
 
 		//Object argus = point.getArgs()[0].toString();		
-		logger.info(point.getSignature().getName() + " [INVOKED] " + "with ");
+		logger.info("[AFTER] " + point.getSignature().getName() + " (INVOKED-Success) ");
 	}
 	
 	@After("execution(* com.infiniteskills.mvc.controllers.AlbumController.*(..))")
